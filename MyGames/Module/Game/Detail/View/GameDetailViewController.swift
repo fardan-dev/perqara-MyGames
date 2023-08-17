@@ -17,6 +17,7 @@ class GameDetailViewController: UIViewController {
   @IBOutlet weak var ratingLabel: UILabel!
   @IBOutlet weak var totalGameLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
+  @IBOutlet weak var loadingView: UIView!
   
   private var _cancellables: Set<AnyCancellable> = []
   private var _presenter: GameDetailPresenter
@@ -57,6 +58,12 @@ class GameDetailViewController: UIViewController {
   }
   
   private func _observableView() {
+    _presenter.isLoading.sink(receiveValue: { isLoading in
+      DispatchQueue.main.async {
+        self.loadingView.isHidden = !isLoading
+      }
+    }).store(in: &_cancellables)
+    
     _presenter.game.sink { game in
       if game != nil {
         self._setupView()

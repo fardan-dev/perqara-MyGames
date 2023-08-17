@@ -13,6 +13,7 @@
                 <outlet property="descriptionLabel" destination="Wvp-z5-hEb" id="Zka-Ld-HIU"/>
                 <outlet property="developerLabel" destination="SKy-yt-MBw" id="2hb-qo-Cwf"/>
                 <outlet property="gameImageView" destination="iRW-TD-2bb" id="Yy3-eM-tWR"/>
+                <outlet property="loadingView" destination="3ZU-ru-XQG" id="DqX-Vz-6IC"/>
                 <outlet property="ratingLabel" destination="lQL-5M-Uwh" id="icr-5Q-Za2"/>
                 <outlet property="releasedDateLabel" destination="U1H-LY-PL5" id="pcj-ZO-Xc4"/>
                 <outlet property="titleLabel" destination="b0A-ci-km5" id="9ZQ-nd-WzC"/>
@@ -138,11 +139,29 @@
                     <viewLayoutGuide key="contentLayoutGuide" id="hkW-Qp-kIa"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="phF-lR-NiA"/>
                 </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ZU-ru-XQG">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Iuc-y4-KtX">
+                            <rect key="frame" x="169" y="305" width="37" height="37"/>
+                            <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Iuc-y4-KtX" firstAttribute="centerX" secondItem="3ZU-ru-XQG" secondAttribute="centerX" id="ITd-j4-E4B"/>
+                        <constraint firstItem="Iuc-y4-KtX" firstAttribute="centerY" secondItem="3ZU-ru-XQG" secondAttribute="centerY" id="vQx-Pv-RG6"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="3ZU-ru-XQG" firstAttribute="top" secondItem="KrZ-NZ-Beg" secondAttribute="top" id="0vw-nF-mbI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="KrZ-NZ-Beg" secondAttribute="bottom" id="AJf-Pb-XrD"/>
+                <constraint firstItem="3ZU-ru-XQG" firstAttribute="leading" secondItem="KrZ-NZ-Beg" secondAttribute="leading" id="HNU-CM-7Fe"/>
+                <constraint firstItem="3ZU-ru-XQG" firstAttribute="trailing" secondItem="KrZ-NZ-Beg" secondAttribute="trailing" id="KBO-Hj-UXJ"/>
+                <constraint firstItem="KrZ-NZ-Beg" firstAttribute="bottom" secondItem="3ZU-ru-XQG" secondAttribute="bottom" id="eRK-qw-U59"/>
                 <constraint firstItem="KrZ-NZ-Beg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hMc-9g-TPY"/>
                 <constraint firstItem="KrZ-NZ-Beg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mZJ-01-SXR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KrZ-NZ-Beg" secondAttribute="trailing" id="tcM-9X-CcY"/>

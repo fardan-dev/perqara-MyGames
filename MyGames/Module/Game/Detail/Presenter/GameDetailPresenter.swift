@@ -13,6 +13,8 @@ class GameDetailPresenter {
   private var gameDetailUseCase: GameDetailUseCase
   
   var game = CurrentValueSubject<GameModel?, Never>(GameModel())
+  var isLoading = CurrentValueSubject<Bool, Never>(false)
+  var errorMessage = CurrentValueSubject<String, Never>("")
   
   init(gameId: String, gameDetailUseCase: GameDetailUseCase) {
     self.gameId = gameId
@@ -20,10 +22,17 @@ class GameDetailPresenter {
   }
   
   func getGameDetail() {
+    isLoading.send(true)
     gameDetailUseCase
       .getGameDetail(id: gameId)
       .sink(receiveCompletion: { completion in
-        
+        switch completion {
+        case .finished:
+          self.isLoading.send(false)
+        case .failure(let error):
+          self.isLoading.send(false)
+          self.errorMessage.send(error.localizedDescription)
+        }
       }, receiveValue: { game in
         self.game.send(game)
       }).store(in: &cancellables)
